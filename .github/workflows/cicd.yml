@@ -27,13 +27,13 @@ jobs:
       - run: mkdir -p ~/.aws/
       - run: echo "$super_secret" > ~/.aws/credentials
         env: # Or as an environment variable
-          super_secret: ${{ secrets.AWS_CONFIG }}
+          super_secret: ${{ secrets.SANDBOX95 }}
       - run: cat ~/.aws/credentials
       - run: aws configure list-profiles
-      - run: aws s3 ls --region eu-central-1 --profile 784642624117_Student
+      - run: aws s3 ls --region eu-central-1 --profile sandbox95
       - uses: hashicorp/setup-terraform@v2
       - run: terraform version
       - run: terraform -chdir=./infra init
       - run: terraform -chdir=./infra validate
       - run: terraform -chdir=./infra apply -auto-approve
-      - run: aws s3 sync --region eu-central-1 ./build s3://my-bucket-ue139cicd/ --profile 784642624117_Student
+      - run: aws s3 sync --region eu-central-1 ./build s3://my-bucket-ue139cicd/ --profile sandbox95
