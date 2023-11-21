@@ -2,7 +2,7 @@ resource "aws_s3_bucket" "this" {
   bucket = var.bucket_name
 
   tags = {
-    Name      = "My lovely website"
+    Name      = "UE139"
     Terraform = "True"
   }
 }
